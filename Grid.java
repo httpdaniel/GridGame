@@ -1,10 +1,3 @@
-
-/**
- * Write a description of class Grid here.
- *
- * @author (Conor Hayes)
- * @version (a version number or a date)
- */
 import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,11 +22,11 @@ public class Grid
     }
 
     public void addAvatar(GridObject gridObject, int x, int y){
-        gridObjects.add(gridObject); // add the GridObject to the gridObjects arraylist
-        int index = size * x + y; // as explained in tutorial 1
-        Location location = locations.get(index); // returns the Location object
-        location.setGridObject(gridObject); // sets the GridObject for this Location
-        gridObject.setLocation(location); // sets the Location for the GridObject
+        gridObjects.add(gridObject);
+        int index = size * x + y;
+        Location location = locations.get(index);
+        location.setGridObject(gridObject);
+        gridObject.setLocation(location);
     }
     
     public static void main(String[] args){
@@ -45,22 +38,22 @@ public class Grid
         Seed seed4 = new Seed("Oat seed");
         Seed seed5 = new Seed("Sunflower seed");
         
-        grid.addAvatar(seed, 0, 0); //add the seed to the Grid at location 0,0
-        grid.addAvatar(seed2, 0, 1); //add the seed at location 0,1
-        grid.addAvatar(seed3, 0, 2); //add the seed at location 0,2
-        grid.addAvatar(seed4, 0, 3); //add the seed at location 0,3
-        grid.addAvatar(seed5, 0, 4); //add the seed at location 0,4
+        grid.addAvatar(seed, 0, 0); // add the seed to the Grid at location 0,0
+        grid.addAvatar(seed2, 0, 1);
+        grid.addAvatar(seed3, 0, 2);
+        grid.addAvatar(seed4, 0, 3);
+        grid.addAvatar(seed5, 0, 4);
         
         Canary topsie = new Canary("Topsie");
         Canary tim = new Canary("Tim");
         Canary bluey = new Canary("Bluey");
      
         grid.addAvatar(topsie,4,4); //add topsie at location 4,4
-        grid.addAvatar(tim,3,4); //add tim at location 0,4
+        grid.addAvatar(tim,3,4);
         grid.addAvatar(bluey,2,4);
         
         Cat felix = new Cat("Felix");
-        grid.addAvatar(felix,1,3); //add felix at location 1,3
+        grid.addAvatar(felix,1,3);
         
         grid.start(24); // execute the game instructions
         
@@ -81,8 +74,8 @@ public class Grid
                     while(destination == null || (gridObject.getLocation()==destination)){ // makes sure that the random location is not the same as location
                         destination = getRandomLocation(); // select a random destination to move to
                     } 
-                    if(!destination.isOccupied()){ // check if the desination is  occupied
-                       animal.move(destination); //if not occupied, just move to the destination location;
+                    if(!destination.isOccupied()){ // check if the desination is occupied
+                       animal.move(destination); // if not occupied, just move to the destination location
                     }else{
                        GridObject occupant =  destination.getGridObject(); // get the occupant at the destination location
                        if(occupant instanceof Food){ // if it is a type of food
@@ -90,10 +83,10 @@ public class Grid
                           Location startLocation = gridObject.getLocation();  // get its location 
                           animal.move(destination); //move to the desination location. This displaces occupant
                           if(!animal.eat(food)){ // Now try to eat the  occupant. Return false if inedible
-                            animal.move(startLocation); //if it fails to eat, it must move back to its startLocation
-                            occupant.setLocation(destination);//reinstate the occupant's location   
+                            animal.move(startLocation); // if it fails to eat, it must move back to its startLocation
+                            occupant.setLocation(destination); // reinstate the occupant's location   
                           }
-                       }else{
+                       } else{
                          System.out.println(gridObject.getName() + " cannot move to location "+ occupant.getLocation() +" occuppied by " + occupant.getName());
                        }
                      }
@@ -119,21 +112,20 @@ public class Grid
     }
     
     
-    private void removeDeadObjects(){ // note how this is a private method. It can only be called within the Grid object
-        // Iteraror is the only safe way to remove an object from a list that you are currently iterating over
+    private void removeDeadObjects(){ 
         Iterator<GridObject> it = gridObjects.iterator(); 
             while(it.hasNext()){
                GridObject gridObject = it.next();
                if(gridObject.getEnergy()<=0){
-                   gridObject.setLocation(null); // sets its Location to zero
-                   it.remove(); // removes it from the GridObjects list
+                   gridObject.setLocation(null);
+                   it.remove();
                }
             }
     }
     
     private boolean isFinished(){ 
         int animals=0;
-        ArrayList<GridObject> remainingAnimals = new ArrayList(); // a list for remaining Animal objects
+        ArrayList<GridObject> remainingAnimals = new ArrayList();
         for(GridObject gridObject: gridObjects){
             if(gridObject instanceof Animal){
                 remainingAnimals.add(gridObject);
@@ -146,8 +138,8 @@ public class Grid
             return true;
         }
         
-        if(remainingAnimals.size()==1){ // if one Animal Avataor is left, it is the winner
-            GridObject winner = remainingAnimals.get(0);// return the Animal at the top of the list
+        if(remainingAnimals.size()==1){
+            GridObject winner = remainingAnimals.get(0);
             System.out.println();
             System.out.println(winner.getName().toUpperCase() + " is the winner with energy level " + winner.getEnergy());
             return true;    
