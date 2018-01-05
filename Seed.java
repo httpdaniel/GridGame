@@ -1,18 +1,8 @@
-
-/**
- * Write a description of class Seed here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class Seed extends Vegetable implements Food
 {
     
    private Location location;
 
-    /**
-     * Constructor for objects of class Seed
-     */
     public Seed(String name)
     {
         super();
@@ -60,7 +50,5 @@ public class Seed extends Vegetable implements Food
     public Location getLocation(){
         return location;
     }
-    
-    
     
 }
