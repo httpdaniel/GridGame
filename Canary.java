@@ -1,38 +1,20 @@
-
-/**
- * Write a description of class Canary here.
- *
- * @author (Conor Hayes)
- * @version (October 5th 2017)
- */
 public class Canary extends Bird implements Food
 {
     
 
-    /**
-     * Constructor for objects of class Canary
-     */
     public Canary(String name)
     {
-        super(); // call the constructor of the superclass Bird
+        super();
         this.name = name;
-        colour = "yellow"; // this overrides the value inherited from Bird
+        colour = "yellow";
         energy = 5;
     }
     
-    /**
-     * Sing method overrides the sing method
-     * inherited from superclass Bird
-     */
-    @Override // good programming practice to use @Override to denote overridden methods
+    @Override
     public void sing(){
         System.out.println("tweet tweet tweet");
     }
     
-    /**
-     * toString method returns a String representation of the bird
-     * What superclass has Canary inherited this method from? 
-     */
     @Override
     public String toString(){
         String strng ="";
@@ -69,8 +51,8 @@ public class Canary extends Bird implements Food
             return false;
         }
         
-        if(food instanceof Seed){ // recall the same test is done in equals
-            Seed seed = (Seed)food; // then Cast the variable to a Seed variable
+        if(food instanceof Seed){
+            Seed seed = (Seed)food;
             int calories = seed.extractEnergy(); // get the 
             energy +=calories;
             System.out.println(getName() + " has Eaten a "+ seed.getName() + ". Energy level at " + getEnergy());
