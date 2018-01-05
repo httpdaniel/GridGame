@@ -1,20 +1,8 @@
-
-/**
- * Abstract class Feline - write a description of the class here
- *
- * @author (your name here)
- * @version (version number or date here)
- */
 public abstract class Feline extends Animal
 {
-    // instance variables - replace the example below with your own
     boolean hasClaws;
 
-    /**
-     * move method overrides the move method
-     * inherited from superclass Animal
-     */
-    @Override // good programming practice to use @Override to denote overridden methods
+    @Override
     public boolean move(double distance){
       
       if(energy==0){
@@ -23,7 +11,7 @@ public abstract class Feline extends Animal
       }
       
       System.out.printf(getName() + " runs %f metres.  ", distance);
-      energy-=2; //loses 2 units of energy for each move
+      energy-=2; // loses 2 units of energy for each move
       if(energy<0){
         energy = 0; // prevents energy having a negative number  
       }
