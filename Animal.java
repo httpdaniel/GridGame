@@ -1,13 +1,5 @@
-
-/**
- * Write a description of class Animal here.
- *
- * @author (conor hayes)
- * @version (October 5th 2017)
- */
 public abstract class Animal implements GridObject
 {
-    // instance variables - replace the example below with your own
     boolean hasSkin;
     boolean breathes;
     String colour;
@@ -15,54 +7,28 @@ public abstract class Animal implements GridObject
     String name; // each Animal has a name
     Location location;
     
-    /**
-     * Constructor for objects of class Animal
-     */
     public Animal()
     {
-        breathes = true; //all the subclasses of Animal inherit this property and value
-        hasSkin = true; // all the subclasses of Animal inherit this property and value
-        colour = "grey"; //all the subclasses of Animal inherit this property and value
+        // all the subclasses of Animal inherit these properties and values
+        breathes = true;
+        hasSkin = true; 
+        colour = "grey";
     }
-    /**
-     * move method
-     * param int distance - the distance the Animal should move
-     * All subclasses inherit this method
-     */
+    
     public abstract boolean move(double distance);
     
-    /**
-     * eat method
-     * param Food food - food the Animal should eat
-     * We haven't defined this yet
-     * All subclasses inherit this method
-     */
     public abstract boolean eat(Food food);
     
-    /**
-     * getter method for colour field
-     * All subclasses inherit this method
-     */
     public String getColour(){
         return colour;
     }
-    
-    /**
-     * getter method for colour field
-     * All subclasses inherit this method
-     */
     
     public int getEnergy(){
         return energy;
     }
     
     
-     /**
-     * 'getter' method for haSkin field
-     * All subclasses inherit this method
-     */
-    
-    public boolean hasSkin(){
+     public boolean hasSkin(){
         return hasSkin;
     }
     
@@ -80,13 +46,13 @@ public abstract class Animal implements GridObject
     public boolean move(Location destination){
         
         double distance = location.distanceTo(destination);
-        if(move(distance)){ // if the Canary can move this distance
-            location.setGridObject(null);// resets the location's grid object to be null
+        if(move(distance)){
+            location.setGridObject(null); // resets the location's grid object to be null
             setLocation(destination);
-            return true; // return 
+            return true;
         }
         
-        return false; // otherwise return false
+        return false;
     }
     
     @Override
