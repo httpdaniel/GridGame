@@ -25,25 +25,9 @@ public class Canary extends Bird implements Food
         strng+= "colour: ";
         strng+= colour;
         strng+= "\n";
-        // TOD0 Your job is to include the fields and attributes inherited 
-        //from Bird and Animal in the String representation
         return strng;
     }
 
-    
-    /**
-     * equals method defines how equality is defined between 
-     * the instances of the Canary class
-     * param Object
-     * return true or false depending on whether the input object is 
-     * equal to this Canary object
-     */
-    
-    @Override
-    public boolean equals(java.lang.Object object){
-        //TODO : You have to define an equals method for this class
-        return false; //default equals
-    }
     
     @Override
     public boolean eat(Food food){
@@ -53,7 +37,7 @@ public class Canary extends Bird implements Food
         
         if(food instanceof Seed){
             Seed seed = (Seed)food;
-            int calories = seed.extractEnergy(); // get the 
+            int calories = seed.extractEnergy();
             energy +=calories;
             System.out.println(getName() + " has Eaten a "+ seed.getName() + ". Energy level at " + getEnergy());
             return true;
@@ -74,8 +58,5 @@ public class Canary extends Bird implements Food
         energy = 0;
         return cal;
     }
-    
-    
-    
     
 }
